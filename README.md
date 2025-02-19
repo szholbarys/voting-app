@@ -16,7 +16,6 @@ Database: MongoDB Atlas
 
 ```bash
 git clone https://github.com/szholbarys/voting-app.git
-cd voting-app
 ```
 
 ### front
