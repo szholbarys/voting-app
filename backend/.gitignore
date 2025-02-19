@@ -39,3 +39,4 @@ coverage/
 
 # VS Code settings
 .vscode/
+.vercel

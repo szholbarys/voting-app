@@ -1,5 +1,7 @@
 import { create } from "zustand";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
 type Meme = {
   _id: string;
   url: string;
@@ -27,7 +29,7 @@ export const useVoteStore = create<VoteState>((set, get) => ({
   setUserEmail: (email: string) => set({ userEmail: email }),
 
   fetchMemes: async () => {
-    const res = await fetch("http://localhost:5001/api/memes/random");
+    const res = await fetch(`${API_URL}/api/memes/random`);
     const data: Meme[] = await res.json();
     set({ memes: data, selectedMeme: null });
   },
@@ -44,7 +46,7 @@ export const useVoteStore = create<VoteState>((set, get) => ({
       return;
     }
 
-    await fetch("http://localhost:5001/api/memes/vote", {
+    await fetch(`${API_URL}/api/memes/vote`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ memeId: selectedMeme._id, email: userEmail }),

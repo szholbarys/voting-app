@@ -7,7 +7,7 @@ const app = express();
 app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 
-const memeRoutes = require("./routes/votes");
+const memeRoutes = require("../routes/votes");
 app.use("/api/memes", memeRoutes);
 
 mongoose
@@ -18,5 +18,4 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
-const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = app;
